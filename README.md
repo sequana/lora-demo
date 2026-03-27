@@ -2,7 +2,7 @@
 
 Demo site for the [sequana_lora](https://github.com/sequana/lora) pipeline — part of the [Sequana](https://github.com/sequana/sequana) project.
 
-**Live site:** https://sequana.github.io/sequana-lora-demo
+**Live site:** https://sequana.github.io/lora-demo
 
 ## What is this?
 
@@ -18,7 +18,7 @@ having to run the pipeline themselves.
 
 | Resource | URL |
 |---|---|
-| Demo site | https://sequana.github.io/sequana-lora-demo |
+| Demo site | https://sequana.github.io/lora-demo |
 | sequana_lora pipeline | https://github.com/sequana/lora |
 | Sequana project | https://github.com/sequana/sequana |
 | Sequana home page | https://sequana.github.io |
