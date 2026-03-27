@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <title>
+  Main coverage report (hifi5) - Sequana</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Javascript static files  -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script src="./js/jquery-3.5.1.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/jquery.dropdown.min.js"></script>
+  <script src="./js/jquery.dataTables.min.js"></script>
+  <script src="./js/dataTables.buttons.min.js"></script>
+  <script src="./js/buttons.html5.min.js"></script>
+  <script src="./js/papaparse.min.js"></script>
+  <script src="./js/canvasjs.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <!-- CSS static files -->
+  <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css" />
+  <link type="text/css" rel="stylesheet" href="./css/jquery.dropdown.min.css" />
+  <link type="text/css" rel="stylesheet" href="./css/jquery.dataTables.min.css" />
+  <link type="text/css" rel="stylesheet" href="./css/buttons.dataTables.min.css" />
+  <link type="text/css" rel="stylesheet" href="./css/report.css" />
+
+</head>
+
+<body>
+  <div class="container-fluid">
+
+    <header>
+
+    <div>
+    <img style="float:left ; border:0px; width=80px ; height:80px; position:relative; left:0px" src="./images/logo_256x256.png">
+    </div>
+      <h1 class="title">Main coverage report (hifi5)</h1>
+      <h2 class="subtitle">
+        Report created with <a href="http://sequana.readthedocs.org">Sequana</a>
+        (v0.18.0)
+      
+      
+      </h2>
+    </header>
+
+
+    
+  <p>Report the coverage of your sample (hifi5) to check the quality of your mapping and to highlight regions of interest (under and over covered).</p>
+  <div id="chromosomes" style="clear:both">
+      <h2 id="chromosomes">Chromosomes
+        <div style="float:right"></div>
+      </h2>
+    <p>Link to coverage analysis report for each chromosome. Size, mean coverage and coefficient of variation are reported in the table below.</p>
+
+<script async type="text/javascript">
+    function parseCsv_id_chrom(csv, id) {
+        Papa.parse(csv, {
+            comments: '#',
+            delimiter: ',',
+            header: true,
+            dynamicTyping: true,
+            error: function(reason) {
+                console.log(reason);
+            },
+            complete: function(results) {
+                $(id).DataTable({pageLength:15,
+dom:'Bfrtip',
+buttons:[{'extend': 'copy', 'exportOptions': {'columns': ':visible'}}, {'extend': 'csv', 'exportOptions': {'columns': ':visible'}}],
+columns:[{data:'chromosome',
+render:function(data, type, row, meta){
+                return '<a href="'+row.link+'" target="_blank">'+data+'</a>';
+            }
+            },
+{data:'size'},
+{data:'mean_coverage'},
+{data:'coef_variation'},
+{data:'link',
+visible:false}],data: results.data});
+            }
+        });
+    };
+</script>
+
+
+<script async type="text/javascript">
+    $(document).ready(function() {
+        var id_chrom = document.getElementById('csv_id_chrom').innerText;
+        parseCsv_id_chrom(id_chrom, '#table_id_chrom');
+        id_chrom = null;
+    });
+</script>
+        <style>#csv_id_chrom{display:none}</style>
+<pre id="csv_id_chrom">chromosome,size,mean_coverage,coef_variation,link
+contig_1,2206873,32.7,0.271,contig_1/contig_1.cov.html
+contig_2,12729,25,0.132,contig_2/contig_2.cov.html</pre>
+
+    <table id="table_id_chrom" class="display table text-center" style="width:100%">
+        <thead><tr><th>chromosome</th>
+<th>size</th>
+<th>mean_coverage</th>
+<th>coef_variation</th>
+<th>link</th></tr></thead>
+    </table>
+        
+  </div>
+  <div id="coverage_bar_plot" style="clear:both">
+      <h2 id="coverage_bar_plot">Coverage
+        <div style="float:right"></div>
+      </h2>
+    <p>Link to coverage analysis report for each chromosome. Size, mean coverage and coefficient of variation are reported in the table below.</p><div>                            <div id="208df0d7-7627-46bb-8553-62cef6eabe5e" class="plotly-graph-div" style="height:400px; width:100%;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("208df0d7-7627-46bb-8553-62cef6eabe5e")) {                    Plotly.newPlot(                        "208df0d7-7627-46bb-8553-62cef6eabe5e",                        [{"alignmentgroup":"True","customdata":[[100.0,2206873.0],[100.0,12729.0]],"hovertemplate":"name=%{x}\u003cbr\u003eDOC=%{y}\u003cbr\u003eBOC=%{marker.color}\u003cbr\u003elength=%{customdata[1]}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":[100.0,100.0],"coloraxis":"coloraxis","pattern":{"shape":""}},"name":"","offsetgroup":"","orientation":"v","showlegend":false,"textposition":"auto","x":["contig_1","contig_2"],"xaxis":"x","y":[32.698904739874024,24.96590462722916],"yaxis":"y","type":"bar"}],                        {"barmode":"relative","coloraxis":{"colorbar":{"title":{"text":"BOC"}},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"height":400,"legend":{"tracegroupgap":0},"margin":{"t":60},"template":{"data":{"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmapgl":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmapgl"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"#E5ECF6","showlakes":true,"showland":true,"subunitcolor":"white"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","gridwidth":2,"linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"bgcolor":"#E5ECF6","caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"name"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"DOC"}}},                        {"responsive": true}                    )                };                            </script>        </div>
+  </div>
+    <br>
+    <br>
+    </div>
+
+  <footer class="footer">
+    <div class="container">
+    This pipeline is part of the  <a href="http://sequana.readthedocs.io"
+target="_blank">Sequana project</a>. Please consider citing us (<a href="http://sequana.readthedocs.io">How to cite
+?</a>).
+<br>
+
+<p>You may also star us: <a class="github-button" href="https://github.com/sequana/"
+    data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-star" data-size="large"
+     data-show-count="true" aria-label="Star sequana/rnaseq on GitHub">Star</a> 
+ <a class="github-button" href="https://github.com/sequana/sequana"
+     data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-star" data-size="large"
+ data-show-count="true" aria-label="Star sequana/rnaseq on GitHub">Star</a>
+Generated with Sequana (03-26-2026 14:22:19)</p>
+ 
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,2 @@
+# sequana version: 0.18.0
+sequana --input-file hifi2/minimap2/hifi2.bed -H 4.0 -L -4.0 --clustering-parameter 0.5 --chunk-size 5000000 --window-gc 201 --mixture-models 2 --output-directory hifi2/sequana_coverage --window-median 20001 --reference-file hifi2/sorted_contigs/hifi2.fasta

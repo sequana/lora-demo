@@ -1,0 +1,3 @@
+Sample	Sequana/coverage_mqc-generalstats-sequana_coverage-DOC	Sequana/coverage_mqc-generalstats-sequana_coverage-C3	Sequana/coverage_mqc-generalstats-sequana_coverage-CV	Sequana/coverage_mqc-generalstats-sequana_coverage-length	Sequana/coverage_mqc-generalstats-sequana_coverage-ROI	Sequana/coverage_mqc-generalstats-sequana_coverage-BOC
+hifi3/contig_1	65.71174015978644	0.9126	0.24276076246051098	2205694	75	100.0
+hifi3/contig_2	49.18037552046508	0.9265	0.1262166146479303	12729	12	100.0
