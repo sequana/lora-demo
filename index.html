@@ -22,8 +22,9 @@ description: Interactive HTML report examples from the sequana_lora long-read as
     The pipeline covers the following stages:
   </p>
   <ul>
-    <li><strong>Quality control</strong> — NanoStat / FastQC + MultiQC summary</li>
-    <li><strong>Assembly</strong> — Flye / Hifiasm, contig stats via QUAST</li>
+    <li><strong>Quality control</strong> — long reads QC</li>
+    <li><strong>Assembly</strong> — Flye / Hifiasm / Canu / Pecat / Necat / Unicycler, contig stats via QUAST</li>
+    <li><strong>Completeness assessment</strong> — checkM, BUSCO</li>
     <li><strong>Coverage analysis</strong> — sequana_coverage per-contig HTML reports</li>
     <li><strong>BLAST annotation</strong> — top-hit taxonomic assignment of contigs</li>
     <li><strong>Graph visualisation</strong> — Bandage assembly graph</li>
