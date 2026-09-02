@@ -111,4 +111,41 @@ description: Interactive HTML report examples from the sequana_lora long-read as
     </div>
 
   </div>
+
+  <h2 style="margin-top:3rem;">⚙️ How to Use This Pipeline</h2>
+
+  <p>Install sequana_lora and run on your own data:</p>
+
+  <div style="background:var(--bg);padding:1.5rem;border-radius:var(--radius);margin:1.5rem 0;border:1px solid var(--border);">
+    <p style="font-weight:600;color:var(--hero-bg2);margin-top:0;">1. Install</p>
+    <pre style="background:var(--hero-bg);color:#e6edf3;padding:1rem 1.25rem;border-radius:6px;overflow-x:auto;font-family:var(--font-mono);font-size:0.85rem;line-height:1.6;margin:0.75rem 0;">pip install sequana-lora</pre>
+
+    <p style="font-weight:600;color:var(--hero-bg2);margin-top:1.5rem;">2. Initialize workflow</p>
+    <pre style="background:var(--hero-bg);color:#e6edf3;padding:1rem 1.25rem;border-radius:6px;overflow-x:auto;font-family:var(--font-mono);font-size:0.85rem;line-height:1.6;margin:0.75rem 0;">sequana_lora \
+  --assembler flye \
+  --input-directory /path/to/long_reads/ \
+  --data-type pacbio-hifi \
+  --genome-size 2m \
+  --working-directory lora_output</pre>
+
+    <p style="font-weight:600;color:var(--hero-bg2);margin-top:1.5rem;">3. Run with Snakemake</p>
+    <pre style="background:var(--hero-bg);color:#e6edf3;padding:1rem 1.25rem;border-radius:6px;overflow-x:auto;font-family:var(--font-mono);font-size:0.85rem;line-height:1.6;margin:0.75rem 0;">cd lora_output
+snakemake -c 8  # Use as many cores as needed</pre>
+
+    <p style="font-size:0.9rem;color:var(--text-muted);margin-top:1rem;margin-bottom:0;">
+      For more options (different assemblers, BUSCO, BLAST, etc.), see the
+      <a href="https://github.com/sequana/lora#readme" target="_blank">GitHub README</a>
+      or <a href="https://sequana.readthedocs.org/" target="_blank">Sequana documentation</a>.
+    </p>
+  </div>
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:3rem 0;">
+
+  <p style="font-size:0.9rem;color:var(--text-muted);">
+    <strong>Resources:</strong>
+    <a href="https://github.com/sequana/lora" target="_blank">GitHub</a> ·
+    <a href="https://github.com/sequana/lora#readme" target="_blank">Documentation</a> ·
+    <a href="https://sequana.readthedocs.org/" target="_blank">Sequana Docs</a> ·
+    <a href="https://doi.org/10.5281/zenodo.17207091" target="_blank">Test Data</a>
+  </p>
 </div>
